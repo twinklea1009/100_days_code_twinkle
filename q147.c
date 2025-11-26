@@ -18,7 +18,8 @@ struct Employee
 
 int main()
 {
-    struct Employee e, e_read;
+    struct Employee e, e_read;/* e → will store data to write to file
+	e_read → will store data read back from file*/
     FILE *fp;
 
     printf("Enter Employee Name, ID, Salary:\n");

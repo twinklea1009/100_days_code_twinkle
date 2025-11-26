@@ -1,4 +1,4 @@
-// Q43: Write a program to check if a number is a strong number.
+// Q43: Write a program to check if a number is a strong number.sum of factorials
 
 /*
 Sample Test Cases:

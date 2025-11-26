@@ -1,1 +1,0 @@
-sample.txt (Content: Hello world\nThis is C programming)

@@ -12,19 +12,14 @@ i
 
 #include <stdio.h>
 
-int main()
-{
-    char str[100];
+int main() {
+    char str[] = "Hello"; // Example string
     int i = 0;
 
-    // Read string input (till newline)
-    scanf("%[^\n]s", str);
-
-    // Print each character on new line
-    while (str[i] != '\0')
-    {
-        printf("%c\n", str[i]);
-        i++;
+    // Loop through the string until the null terminator ('\0') is encountered
+    while (str[i] != '\0') {
+        printf("%c\n", str[i]); // Print the character followed by a newline
+        i++; // Move to the next character
     }
 
     return 0;

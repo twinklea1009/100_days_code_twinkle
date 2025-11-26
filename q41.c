@@ -15,35 +15,48 @@ Output 2:
 */
 
 #include <stdio.h>
-#include <math.h>
+#include <math.h> // Required for pow() function
 
-int main()
+int main() 
 {
-    int num, first, last, digits, power, middle, swapped;
+    int num, swappedNum;
+    int firstDigit, lastDigit, digitsCount = 0;
+    int temp;
 
-    // Input
-    printf("Enter a number: ");
+    printf("Enter any number: ");
     scanf("%d", &num);
 
-    // If number has only one digit, it stays the same
-    if (num < 10)
-    {
-        printf("%d\n", num);
+    // Handle single-digit numbers
+    if (num >= 0 && num < 10) {
+        printf("Number after swapping first and last digit: %d\n", num);
         return 0;
     }
 
-    last = num % 10;              // last digit
-    digits = (int)log10(num);     // total digits - 1
-    power = (int)pow(10, digits); // 10^(digits)
+    // Find the last digit
+    lastDigit = num % 10;
 
-    first = num / power;  // first digit
-    middle = num % power; // remove first digit
-    middle = middle / 10; // remove last digit
+    // Count the number of digits
+    temp = num;
+    while (temp != 0) {
+        digitsCount++;
+        temp /= 10;
+    }
 
-    // Construct swapped number
-    swapped = last * power + middle * 10 + first;
+    // Find the first digit
+    firstDigit = num / (int)pow(10, digitsCount - 1);
 
-    printf("%d\n", swapped);
+    // Construct the swapped number
+    swappedNum = lastDigit; // Start with the last digit
+    swappedNum *= (int)pow(10, digitsCount - 1); // Place it at the first position
+
+    // Add the middle part of the number
+    swappedNum += num % (int)pow(10, digitsCount - 1); // Remove the original first digit
+    swappedNum -= lastDigit; // Remove the original last digit (which is now at the end of the middle part)
+
+    swappedNum += firstDigit; // Add the original first digit at the last position
+
+    printf("Original number = %d\n", num);
+    printf("Number after swapping first and last digit: %d\n", swappedNum);
 
     return 0;
 }

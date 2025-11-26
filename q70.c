@@ -31,11 +31,11 @@ int main()
     // Print rotated array
     for (int i = n - k; i < n; i++)
     {
-        printf("%d ", arr[i]);
+        printf("%d ", arr[i]);//last k elements
     }
     for (int i = 0; i < n - k; i++)
     {
-        printf("%d ", arr[i]);
+        printf("%d ", arr[i]);//prints rest
     }
 
     return 0;

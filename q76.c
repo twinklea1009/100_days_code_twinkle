@@ -1,4 +1,4 @@
-// Q76: Check if a matrix is symmetric.
+// Q76: Check if a matrix is symmetric.quare matrix that is equal to its own transpose, //
 
 /*
 Sample Test Cases:

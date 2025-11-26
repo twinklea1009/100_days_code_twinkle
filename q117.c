@@ -37,7 +37,7 @@ int main()
     int merged[m + n];
     int i = 0, j = 0, k = 0;
 
-    while (i < m && j < n)
+    while (i < m && j < n)// merging
     {
         if (nums1[i] <= nums2[j])
             merged[k++] = nums1[i++];
@@ -45,12 +45,12 @@ int main()
             merged[k++] = nums2[j++];
     }
 
-    while (i < m)
+    while (i < m)//remaining
         merged[k++] = nums1[i++];
     while (j < n)
         merged[k++] = nums2[j++];
 
-    for (int x = 0; x < m + n; x++)
+    for (int x = 0; x < m + n; x++)//print merged sorted array
     {
         printf("%d ", merged[x]);
     }

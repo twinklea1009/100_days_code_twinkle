@@ -1,4 +1,5 @@
 // Q79: Perform diagonal traversal of a matrix.
+//The traversal begins at the element in the top-left corner (\([0][0]\)).The movement alternates between two directions:Up-right: The row index decreases, and the column index increases.Down-left: The row index increases, and the column index decreases.//
 
 /*
 Sample Test Cases:

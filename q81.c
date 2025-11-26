@@ -16,20 +16,19 @@ Output 2:
 
 #include <stdio.h>
 
-int main()
-{
-    char str[100];
-    int count = 0;
+int main() {
+    char str[100]; // Declare a character array to store the string
+    int count = 0; // Initialize a counter variable
 
-    // Read full line input (until newline)
-    scanf("%[^\n]s", str);
+    printf("Enter a string: ");
+    scanf("%s", str); // Read the string from the user
 
-    // Count characters manually
-    while (str[count] != '\0')
-    {
-        count++;
+    // Loop through the string until the null terminator is found
+    for (int i = 0; str[i] != '\0'; i++) {
+        count++; // Increment the counter for each character
     }
 
-    printf("%d\n", count);
+    printf("Number of characters in the string: %d\n", count);
+
     return 0;
 }
