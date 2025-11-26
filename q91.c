@@ -19,7 +19,7 @@ int main()
 
     printf("Enter a string: ");
     fgets(str, sizeof(str), stdin); // Read string with spaces
-    str[strcspn(str, "\n")] = '\0'; // Remove newline character if present
+   
 
     for (i = 0; str[i] != '\0'; i++)
     {
