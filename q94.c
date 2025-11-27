@@ -27,7 +27,7 @@ int main()
         }
         else
         {
-            word[j] = '\0';
+            word[j] = '\0';// terminate current word
             if (j > max)
             {
                 max = j;

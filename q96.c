@@ -14,7 +14,7 @@ I evol gnidoc
 int main()
 {
     char word[100];
-    int first = 1;
+    int first = 1;//print space
 
     while (scanf("%s", word) == 1)
     {

@@ -20,87 +20,50 @@ Output 3:
 5,5
 */
 #include <stdio.h>
-#include <stdlib.h> // For qsort
-
-// Comparison function for qsort (ascending order)
-int compare(const void *a, const void *b)
-{
-    return (*(int *)a - *(int *)b);
-}
-
-// Function to find first occurrence
-int findFirst(int nums[], int n, int target)
-{
-    int left = 0, right = n - 1;
-    int first = -1;
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target)
-        {
-            first = mid;
-            right = mid - 1;
-        }
-        else if (nums[mid] < target)
-        {
-            left = mid + 1;
-        }
-        else
-        {
-            right = mid - 1;
-        }
-    }
-    return first;
-}
-
-// Function to find last occurrence
-int findLast(int nums[], int n, int target)
-{
-    int left = 0, right = n - 1;
-    int last = -1;
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target)
-        {
-            last = mid;
-            left = mid + 1;
-        }
-        else if (nums[mid] < target)
-        {
-            left = mid + 1;
-        }
-        else
-        {
-            right = mid - 1;
-        }
-    }
-    return last;
-}
-
 int main()
+{ 
+int size, i, j, temp, target;
+printf("Enter size of array: ");
+scanf("%d", &size);
+int nums[size];
+printf("Enter the target element: ");
+scanf("%d", &target);
+printf("Enter elements in array: ");
+for(i=0; i<size; i++)
+{ scanf("%d", &nums[i]); }
+/*Array sorting code */
+for(i=0; i<size; i++)
+{ for(j=i+1; j<size; j++)
 {
-    int n, target;
-    printf("Enter the size of the array: ");
-    scanf("%d", &n);
+if(nums[j] <nums[i])
+{temp = nums[i];
+nums[i] = nums[j];
+nums[j] = temp; 
+}}}
+int first_occurrence = -1;
+    int last_occurrence = -1;
 
-    int nums[n];
-    for (int i = 0; i < n; i++)
-    {
-        printf("enter the elements:");
-        scanf("%d", &nums[i]);
+    // Find first occurrence
+    for (i = 0; i < size; i++) {
+        if (nums[i] == target) {
+            first_occurrence = i;
+            break; // Exit loop once first occurrence is found
+        }
     }
 
-    // Sort the array before searching
-    qsort(nums, n, sizeof(int), compare);
+    // Find last occurrence
+    if (first_occurrence != -1) { // Only search for last if first was found
+        for (i = size - 1; i >= 0; i--) {
+            if (nums[i] == target) {
+                last_occurrence = i;
+                break; // Exit loop once last occurrence is found
+            }
+        }
+    }
 
-    printf("Enter the target value: ");
-    scanf("%d", &target);
-
-    int first = findFirst(nums, n, target);
-    int last = findLast(nums, n, target);
-
-    printf("%d, %d\n", first, last);
+    // Print results
+    printf("First occurrence index: %d\n", first_occurrence);
+    printf("Last occurrence index: %d\n", last_occurrence);
 
     return 0;
 }
