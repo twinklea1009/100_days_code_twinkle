@@ -25,33 +25,32 @@ Output 3:
 #include <stdio.h>
 #include <math.h>
 
-int main()
-{
+int main() {
     int n;
+    printf("Enter a positive integer n: ");
     scanf("%d", &n);
 
-    long long discriminant = (long long)n * n + n;
-    if (discriminant % 2 != 0)
-    {
+    // Calculate the total sum from 1 to n
+    long long totalSum = (long long)n * (n + 1) / 2;
+
+    // The condition is: sum(1 to x) = sum(x to n)
+    // We know sum(1 to x) = x * (x + 1) / 2
+    // And sum(x to n) = totalSum - sum(1 to x-1)
+    // So, x * (x + 1) / 2 = totalSum - (x - 1) * x / 2
+    // x^2 + x = 2 * totalSum - (x^2 - x)
+    // x^2 + x = 2 * totalSum - x^2 + x
+    // 2 * x^2 = 2 * totalSum
+    // x^2 = totalSum
+    // x = sqrt(totalSum)
+
+    double x= sqrt(totalSum);
+    int x_int = (int)x;
+
+    if (x_int* x_int == totalSum) {
+        printf("%d\n", x_int);
+    } else {
         printf("-1\n");
-        return 0;
     }
 
-    long long half = discriminant / 2;
-    long long x = (long long)sqrt(half);
-
-    if (x * x == half && x >= 1 && x <= n)
-    {
-        // Verify the sums
-        long long sum_left = x * (x + 1) / 2;
-        long long sum_right = (long long)n * (n + 1) / 2 - (x - 1) * x / 2;
-        if (sum_left == sum_right)
-        {
-            printf("%lld\n", x);
-            return 0;
-        }
-    }
-
-    printf("-1\n");
     return 0;
 }

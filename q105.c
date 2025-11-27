@@ -22,56 +22,36 @@ Output 3:
 */
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int n;
-    printf("enter the no of number in array: ");
+    printf("Enter the size of the array: ");
     scanf("%d", &n);
-    int nums[n];
-    for (int i = 0; i < n; i++)
-    {
-        printf("enter the no in array: ");
+
+    int nums[n]; 
+
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
         scanf("%d", &nums[i]);
     }
 
-    // Moore's Voting Algorithm to find candidate
-    int candidate = -1;
-    int count = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (count == 0)
-        {
-            candidate = nums[i];
-            count = 1;
+    int majorityElement = -1;
+    
+    for (int i = 0; i < n; i++) {
+        int currentCount = 0;
+        for (int j = 0; j < n; j++) {
+            if (nums[i] == nums[j]) {
+                currentCount++;
+            }
         }
-        else if (nums[i] == candidate)
-        {
-            count++;
-        }
-        else
-        {
-            count--;
+
+        
+        if (currentCount > n / 2) {
+            majorityElement = nums[i];
+            break; 
         }
     }
 
-    // Verify if candidate is majority
-    count = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (nums[i] == candidate)
-        {
-            count++;
-        }
-    }
-
-    if (count > n / 2)
-    {
-        printf("%d\n", candidate);
-    }
-    else
-    {
-        printf("-1\n");
-    }
+    printf("%d\n", majorityElement);
 
     return 0;
 }
